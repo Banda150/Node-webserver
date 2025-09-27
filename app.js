@@ -7,14 +7,15 @@ const app = express()
 const port = process.env.PORT;
 
 //Handlebars
-app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');//Esta línea le dice a Express que el motor de plantillas (view engine) que vas a usar es Handlebars (abreviado como hbs).
 hbs.registerPartials(__dirname + '/views/partials');
 
 //Servidor contenido estatico
 app.use( express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('home',{
+//define una ruta HTTP GET para la URL raíz / en una aplicación web usando Express.js
+app.get('/', (req, res) => {//req (request o solicitud del cliente) y res (response o respuesta que le enviarás).
+    res.render('home',{//Esto renderiza (genera) una vista llamada home, usando un motor de plantillas (como Handlebars, etc.).
         nombre: 'Banda Nemecio',
         titulo: 'Curso de Node'
     })
